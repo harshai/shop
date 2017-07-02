@@ -5,17 +5,17 @@ import {
 } from 'react-router-dom';
 import './header.css';
 
-const Header = ({ count }) => (
+const Header = ({ cartCount }) => (
   <header className="header">
     <nav className="header__nav">
       <NavLink exact activeClassName="link--highlight" className="link" to="/">Home</NavLink>
-      <NavLink activeClassName="link--highlight" className="link" to="/cart">Cart ({count})</NavLink>
+      <NavLink activeClassName="link--highlight" className="link" to="/cart">Cart ({cartCount})</NavLink>
     </nav>
   </header>
 );
 
 Header.PropTypes = {
-  count: PropTypes.number.isRequired,
+  cartCount: PropTypes.number.isRequired,
 };
 
 export default Header;

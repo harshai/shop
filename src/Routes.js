@@ -31,13 +31,18 @@ const AppliedRoute = ({ component: C, props: cProps, ...rest }) =>  (
   <Route render={ props => <C {...props} {...cProps} /> } {...rest} />
 );
 
-const Routes = ({ childProps }) => (
+const Routes = ({ childProps, actions }) => {
+  const productListingProps = {
+    products: childProps.products,
+    ...actions
+  }
+  return(
   <Switch>
-    <AppliedRoute exact path="/" component={AsyncProductsListing} props={childProps} />
-    <AppliedRoute exact path="/cart" component={AsyncCart} props={childProps} />
+    <AppliedRoute exact path="/" component={AsyncProductsListing} props={productListingProps} />
+    <AppliedRoute exact path="/cart" component={AsyncCart} props={childProps.cart} />
     <AppliedRoute exact path="/products/:id" component={AsyncProductDetails} props={childProps} />
     <Route component={AsyncNotFound} />
   </Switch>
-);
+)};
 
 export default Routes;

@@ -1,23 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   withRouter,
 } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as ShopActions from './actions';
 import Routes from './Routes';
 import Header from './components/header/Header';
 import './App.css';
 
-const childProps = {
-  salutation: 'Hello',
-  object: 'World'
-};
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(ShopActions, dispatch)
+});
 
-class App extends Component {
-  render() {
-    return (<main>
-      <Header count={1}/>
-      <Routes childProps={childProps} />
-    </main>);
+const mapStateToProps = state => {
+  const { products, cart } = state;
+  return {
+    products,
+    cart,
+    cartCount: cart.length,
   }
-}
+ }
 
-export default withRouter(App);
+const App = ({ cartCount, actions, ...rest }) => {
+  const childProps = {...rest};
+  return <main>
+    <Header cartCount={cartCount}/>
+    <Routes actions={actions} childProps={childProps} />
+  </main>;
+}
+const connectedApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+export default withRouter(connectedApp);

@@ -1,7 +1,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-const ProductListings = () => <section>ProductListings</section>;
+const ProductListings = (props, actions) => {
+  console.log(props, actions)
+  return <section>ProductListings</section>;
+}
 
 ProductListings.PropTypes = {
 

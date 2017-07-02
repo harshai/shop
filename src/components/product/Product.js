@@ -1,9 +1,12 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-const Product = () => <div>Product</div>;
+const Product = (props, actions) => {
+  console.log(props)
+  return <div>Product</div>
+}
 
-Product.PropTypes = {
+Product.propTypes = {
 
 };
 

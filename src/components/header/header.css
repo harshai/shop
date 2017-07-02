@@ -15,6 +15,8 @@
 .link::after, .link::before {
   content: '';
   position: absolute;
+  font-size: 1.2rem;
+  top: -4px;
   opacity: 0;
   transform: translateX(1rem);
   transition: opacity 0.3s, transform 0.3s;
@@ -33,9 +35,8 @@
 
 .link--highlight::after, .link--highlight::before {
   content: ']';
-  transform: translateX(0.25rem);
+  transform: translateX(0.15rem);
   opacity: 1;
-  font-weight: bold;
 }
 
 .link--highlight::before {
