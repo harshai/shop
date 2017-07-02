@@ -10,6 +10,8 @@ describe('products', () => {
       },
       products: [],
       cart: [],
+      cartProducts: [],
+      cartProducts: [],
       productDetails: {}
     }
   });
@@ -44,6 +46,7 @@ describe('products', () => {
         details: 'Some more details'
       }],
       cart: [],
+      cartProducts: [],
       productDetails: {}
     })
   });
@@ -72,6 +75,7 @@ describe('products', () => {
         price: 4
       }],
       cart: [],
+      cartProducts: [],
       productDetails: {}
     };
 
@@ -93,12 +97,13 @@ describe('products', () => {
           price: 4
         }],
         cart: [],
+        cartProducts: [],
         productDetails: {}
       })
   });
 
   it('should handle FETCH_PRODUCT_DETAILS', () => {
-    const initialState = {
+    let initialState = {
       filters: {},
       products: [{
         productID: 1,
@@ -118,6 +123,7 @@ describe('products', () => {
         price: 4
       }],
       cart: [],
+      cartProducts: [],
       productDetails: {},
     };
     expect(shop(initialState, {
@@ -144,6 +150,7 @@ describe('products', () => {
         price: 4
       }],
       cart: [],
+      cartProducts: [],
       productDetails: {
         productID: 2,
         brand: 'ayataka',
@@ -163,13 +170,68 @@ describe('products', () => {
       },
       products: [],
       cart: [2],
+      cartProducts: [],
       productDetails: {}
    });
   });
 
   it('should handle FETCH_CART_ITEMS', () => {
+    let initialState = {
+      filters: {},
+      products: [{
+        productID: 1,
+        brand: 'ayataka',
+        price: 7
+      }, {
+        productID: 2,
+        brand: 'ayataka',
+        price: 1,
+      }, {
+        productID: 3,
+        brand: 'heaven on earth',
+        price: 1
+      }, {
+        productID: 4,
+        brand: 'ayataka',
+        price: 4
+      }],
+      cart: [1, 2],
+      cartProducts: [],
+      productDetails: {},
+    };
     expect(shop(initialState, {
-      type: 'FETCH_CART'
-    }))
+      type: 'FETCH_CART_ITEMS'
+    })).toEqual({
+      filters: {},
+      products: [{
+        productID: 1,
+        brand: 'ayataka',
+        price: 7
+      }, {
+        productID: 2,
+        brand: 'ayataka',
+        price: 1,
+      }, {
+        productID: 3,
+        brand: 'heaven on earth',
+        price: 1
+      }, {
+        productID: 4,
+        brand: 'ayataka',
+        price: 4
+      }],
+      cart: [1, 2],
+      cartProducts: [{
+        productID: 1,
+        brand: 'ayataka',
+        price: 7
+      }, {
+        productID: 2,
+        brand: 'ayataka',
+        price: 1,
+      }],
+      productDetails: {},
+    })
+
   })
 })

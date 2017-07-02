@@ -12,9 +12,9 @@ const initialState = {
     priceFilter: []
   },
   products: [],
-  productDetails: {}
+  productDetails: {},
   cart: [],
-  cartProducts: []
+  cartProducts: [],
 }
 
 export default (state = initialState, { type, filters, products, cart, productID }) => {
@@ -58,6 +58,12 @@ export default (state = initialState, { type, filters, products, cart, productID
         {},
         state,
         { cart: [ ...state.cart, productID ] }
+      )
+    case FETCH_CART_ITEMS:
+      return Object.assign(
+        {},
+        state,
+        { cartProducts: state.products.filter(product => state.cart.includes(product.productID)) }
       )
     default:
       return state;
