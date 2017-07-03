@@ -13,6 +13,8 @@ describe('products', () => {
       products: [],
       cart: [],
       isFetchingProducts: true,
+      productDetails: {},
+      isFetchingProductDetails: true
     }
   });
 
@@ -52,6 +54,8 @@ describe('products', () => {
       }],
       cart: [],
       isFetchingProducts: false,
+      productDetails: {},
+      isFetchingProductDetails: true
     })
   });
 
@@ -69,6 +73,8 @@ describe('products', () => {
       products: [],
       cart: [2],
       isFetchingProducts: true,
+      productDetails: {},
+      isFetchingProductDetails: true
    });
   });
 
@@ -99,6 +105,34 @@ describe('products', () => {
       products: [],
       cart: [],
       isFetchingProducts: true,
+      productDetails: {},
+      isFetchingProductDetails: true
+    })
+  })
+
+  it('should handle FETCH_PRODUCT_DETAILS', () => {
+    expect(shop(initialState, {
+      type: 'FETCH_PRODUCT_DETAILS',
+      productDetails: {
+        brand: 'Ayataka',
+        type: 'Beverage',
+      },
+      isFetchingProductDetails: false
+    })).toEqual({
+      filters: {
+        brandFilter: [],
+        priceFilter: []
+      },
+      filtersMeta: [],
+      isFetchingFilters: true,
+      products: [],
+      cart: [],
+      isFetchingProducts: true,
+      productDetails: {
+        brand: 'Ayataka',
+        type: 'Beverage'
+      },
+      isFetchingProductDetails: false
     })
   })
 })

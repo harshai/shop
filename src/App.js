@@ -9,7 +9,7 @@ import Routes from './Routes';
 import Header from './components/header/Header';
 import {
   getFilteredProducts,
-  getCartProducts
+  getCartProducts,
 } from './utils/shopUtils';
 import './App.css';
 
@@ -20,16 +20,20 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
   const {
     products,
+    productDetails,
     filters,
     filtersMeta,
     cart,
     isFetchingProducts,
+    isFetchingProductDetails,
     isFetchingFilters
   } = state;
   return {
     products,
     filters,
     filtersMeta,
+    productDetails,
+    isFetchingProductDetails,
     isFetchingFilters,
     isFetchingProducts,
     filteredProducts: getFilteredProducts(filters, products),

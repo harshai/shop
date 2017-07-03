@@ -18,8 +18,7 @@ export const getFilteredProducts = (filters, products) => (
 
 export const getCartProducts = (cart, products) => products.filter(({ id }) => cart.includes(id))
 
-// Curried getProducts, takes in products first and then waits for an ID
-export const getProductDetails = products => id =>
+export const getProductDetails = (id, products) =>
   products.filter(product => product.id === id).pop();
 
 export const toggleArrElement = (el, arr = []) => {

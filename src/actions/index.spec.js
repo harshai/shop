@@ -1,6 +1,19 @@
 import * as actions from './index';
 
 describe('actions', () => {
+  it('should create fetchProductDetails action', () => {
+    const productDetails = {
+      brand: 'Ayataka',
+      category: 'Beverage'
+    }
+    expect(actions.fetchProductDetails())
+      .toEqual({
+        type: 'FETCH_PRODUCT_DETAILS',
+        productDetails: {},
+        isFetchingProductDetails: true
+      })
+  })
+
   it('should create fetchProducts action', () => {
     expect(actions.fetchProducts())
       .toEqual({

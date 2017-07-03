@@ -5,6 +5,12 @@ export const addToCart = productID => ({
   productID
 });
 
+export const fetchProductDetails = (productDetails = {}, isFetchingProductDetails = true) => ({
+  type: types.FETCH_PRODUCT_DETAILS,
+  productDetails,
+  isFetchingProductDetails
+})
+
 export const fetchProducts = (products = [], isFetchingProducts = true) => ({
   type: types.FETCH_PRODUCTS,
   products,

@@ -98,8 +98,7 @@ describe('shopUtils', () => {
       brand: 'ayataka',
       price: 4
     }];
-    expect(getProductDetails(products)).toBeInstanceOf(Function);
-    expect(getProductDetails(products)(2))
+    expect(getProductDetails(2, products))
       .toEqual({
         id: 2,
         brand: 'ayataka',
