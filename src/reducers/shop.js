@@ -58,7 +58,8 @@ export default (state = initialState, actions) => {
       return Object.assign(
         {},
         state,
-        { cart: [ ...state.cart, productID ] }
+        // Allow only unique elements in cart
+        { cart: Array.from(new Set([ ...state.cart, productID ])) }
       )
     default:
       return state;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import mockFetch from '../../utils/mockFetch';
 import LoadingIndicator from '../../components/loadingIndicator/LoadingIndicator';
 import Filters from '../../components/filters/Filters';
+import Products from '../../components/products/Products';
 
 class ProductListings extends Component {
   static propTypes = {
@@ -13,6 +14,7 @@ class ProductListings extends Component {
     setFilters: PropTypes.func.isRequired,
     fetchProducts: PropTypes.func.isRequired,
     fetchFiltersMeta: PropTypes.func.isRequired,
+    addToCart: PropTypes.func.isRequired,
   }
 
   componentWillMount() {
@@ -36,7 +38,9 @@ class ProductListings extends Component {
                 filters={this.props.filters}
                 setFilters={this.props.setFilters}
                 filtersMeta={this.props.filtersMeta} />
-              <div>Products shown: {this.props.filteredProducts.length}</div>
+              <Products
+                products={this.props.filteredProducts}
+                addToCart={this.props.addToCart} />
             </div>
         }
       </section>

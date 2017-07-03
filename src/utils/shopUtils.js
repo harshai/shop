@@ -16,11 +16,11 @@ export const getFilteredProducts = (filters, products) => (
     })
   )
 
-export const getCartProducts = (cart, products) =>
-  products.filter(product => cart.includes(product.productID))
+export const getCartProducts = (cart, products) => products.filter(({ id }) => cart.includes(id))
 
-export const getProductDetails = (productID, products) =>
-  products.filter(product => product.productID === productID).pop();
+// Curried getProducts, takes in products first and then waits for an ID
+export const getProductDetails = products => id =>
+  products.filter(product => product.id === id).pop();
 
 export const toggleArrElement = (el, arr = []) => {
   if (!el) {

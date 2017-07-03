@@ -14,19 +14,19 @@ describe('shopUtils', () => {
         priceFilter: ["0-2", "2-5"]
       },
       products: [{
-        productID: 1,
+        id: 1,
         brand: 'ayataka',
         price: 7
       }, {
-        productID: 2,
+        id: 2,
         brand: 'ayataka',
         price: 1,
       }, {
-        productID: 3,
+        id: 3,
         brand: 'heaven on earth',
         price: 1
       }, {
-        productID: 4,
+        id: 4,
         brand: 'ayataka',
         price: 4
       }],
@@ -34,11 +34,11 @@ describe('shopUtils', () => {
 
     expect(getFilteredProducts(initialState.filters, initialState.products))
       .toEqual([{
-          productID: 2,
+          id: 2,
           brand: 'ayataka',
           price: 1
         }, {
-          productID: 4,
+          id: 4,
           brand: 'ayataka',
           price: 4
         }]
@@ -48,19 +48,19 @@ describe('shopUtils', () => {
   it('should getCartProducts', () => {
     let initialState = {
       products: [{
-        productID: 1,
+        id: 1,
         brand: 'ayataka',
         price: 7
       }, {
-        productID: 2,
+        id: 2,
         brand: 'ayataka',
         price: 1,
       }, {
-        productID: 3,
+        id: 3,
         brand: 'heaven on earth',
         price: 1
       }, {
-        productID: 4,
+        id: 4,
         brand: 'ayataka',
         price: 4
       }],
@@ -69,11 +69,11 @@ describe('shopUtils', () => {
 
     expect(getCartProducts(initialState.cart, initialState.products))
       .toEqual([{
-          productID: 1,
+          id: 1,
           brand: 'ayataka',
           price: 7
         }, {
-          productID: 2,
+          id: 2,
           brand: 'ayataka',
           price: 1,
         }]
@@ -82,25 +82,26 @@ describe('shopUtils', () => {
 
   it('should getProductDetails', () => {
     let products = [{
-      productID: 1,
+      id: 1,
       brand: 'ayataka',
       price: 7
     }, {
-      productID: 2,
+      id: 2,
       brand: 'ayataka',
       price: 1,
     }, {
-      productID: 3,
+      id: 3,
       brand: 'heaven on earth',
       price: 1
     }, {
-      productID: 4,
+      id: 4,
       brand: 'ayataka',
       price: 4
     }];
-    expect(getProductDetails(2, products))
+    expect(getProductDetails(products)).toBeInstanceOf(Function);
+    expect(getProductDetails(products)(2))
       .toEqual({
-        productID: 2,
+        id: 2,
         brand: 'ayataka',
         price: 1,
       })

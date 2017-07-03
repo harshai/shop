@@ -2,6 +2,7 @@ import React from 'react';
 import Loadable from 'react-loadable';
 import LoadingIndicator from './components/loadingIndicator/LoadingIndicator';
 import { Route, Switch } from 'react-router-dom';
+import { getProductDetails } from './utils/shopUtils.js';
 
 const AsyncProductsListing = Loadable({
   loader: () => import('./containers/productListings/ProductListings'),
@@ -47,8 +48,10 @@ const Routes = ({ childProps, actions }) => {
   const cartProps = {
     cartProducts: childProps.cartProducts,
   }
+  const productDetails = getProductDetails(childProps.products)
   const productDetailsProps = {
     addToCart: actions.addToCart,
+    productDetails
   }
   return(
     <Switch>
