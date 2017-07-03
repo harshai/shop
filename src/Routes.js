@@ -2,6 +2,7 @@ import React from 'react';
 import Loadable from 'react-loadable';
 import LoadingIndicator from './components/loadingIndicator/LoadingIndicator';
 import { Route, Switch } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import { getProductDetails } from './utils/shopUtils.js';
 
 const AsyncProductsListing = Loadable({
@@ -58,7 +59,8 @@ const Routes = ({ childProps, actions }) => {
       <AppliedRoute exact path="/" component={AsyncProductsListing} props={productListingProps} />
       <AppliedRoute exact path="/cart" component={AsyncCart} props={cartProps} />
       <AppliedRoute exact path="/products/:id" component={AsyncProductDetails} props={productDetailsProps} />
-      <Route component={AsyncNotFound} />
+      <AppliedRoute exact path="/not-found" component={AsyncNotFound} />
+      <Redirect to="/not-found" component={AsyncNotFound} />
     </Switch>
   )
 };
