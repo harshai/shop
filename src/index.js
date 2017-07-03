@@ -12,7 +12,6 @@ const store = createStore(shop);
 const ProvidedApp = <Provider store={store}>
   <App />
 </Provider>
-
 ReactDOM.render(
   <BrowserRouter>
     {ProvidedApp}

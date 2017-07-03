@@ -5,23 +5,20 @@ export const addToCart = productID => ({
   productID
 });
 
-export const fetchCartItems = (cartItems = []) => ({
-  type: types.FETCH_CART_ITEMS,
-  cartItems
-});
-
-export const fetchProducts = (products = []) => ({
+export const fetchProducts = (products = [], isFetchingProducts = true) => ({
   type: types.FETCH_PRODUCTS,
-  products
+  products,
+  isFetchingProducts
 });
 
-export const filterProducts = (brandFilter = [], priceFilter = []) => ({
-  type: types.FILTER_PRODUCTS,
+export const fetchFilters = (filtersMeta = [], isFetchingFilters = true) => ({
+  type: types.FETCH_FILTERS,
+  filtersMeta,
+  isFetchingFilters
+});
+
+export const setFilters = ({ brandFilter = '', priceFilter = '' }) => ({
+  type: types.SET_FILTERS,
   brandFilter,
   priceFilter
-});
-
-export const fetchProductDetails = productID => ({
-  type: types.FETCH_PRODUCT_DETAILS,
-  productID
 });

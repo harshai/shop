@@ -33,16 +33,28 @@ const AppliedRoute = ({ component: C, props: cProps, ...rest }) =>  (
 
 const Routes = ({ childProps, actions }) => {
   const productListingProps = {
-    products: childProps.products,
-    ...actions
+    filters: childProps.filters,
+    filteredProducts: childProps.filteredProducts,
+    isFetchingProducts: childProps.isFetchingProducts,
+    // Actions
+    addToCart: actions.addToCart,
+    fetchProducts: actions.fetchProducts,
+    setFilters: actions.setFilters,
+  }
+  const cartProps = {
+    cartProducts: childProps.cartProducts,
+  }
+  const productDetailsProps = {
+    addToCart: actions.addToCart,
   }
   return(
-  <Switch>
-    <AppliedRoute exact path="/" component={AsyncProductsListing} props={productListingProps} />
-    <AppliedRoute exact path="/cart" component={AsyncCart} props={childProps.cart} />
-    <AppliedRoute exact path="/products/:id" component={AsyncProductDetails} props={childProps} />
-    <Route component={AsyncNotFound} />
-  </Switch>
-)};
+    <Switch>
+      <AppliedRoute exact path="/" component={AsyncProductsListing} props={productListingProps} />
+      <AppliedRoute exact path="/cart" component={AsyncCart} props={cartProps} />
+      <AppliedRoute exact path="/products/:id" component={AsyncProductDetails} props={productDetailsProps} />
+      <Route component={AsyncNotFound} />
+    </Switch>
+  )
+};
 
 export default Routes;

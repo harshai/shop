@@ -1,29 +1,32 @@
 import * as actions from './index';
 
-describe('store actions', () => {
+describe('actions', () => {
   it('should create fetchProducts action', () => {
     expect(actions.fetchProducts())
       .toEqual({
         type: 'FETCH_PRODUCTS',
-        products: []
+        products: [],
+        isFetchingProducts: true
       });
     const products = [{
       brand: 'Ayataka',
       category: 'Beverage'
     }]
-    expect(actions.fetchProducts(products))
+    expect(actions.fetchProducts(products, false))
       .toEqual({
         type: 'FETCH_PRODUCTS',
         products,
+        isFetchingProducts: false
       })
   });
 
-  it('should create fetchProductDetails action', () => {
-    expect(actions.fetchProductDetails(1))
+  it('should create fetchFitlers action', () => {
+    expect(actions.fetchFilters())
       .toEqual({
-        type: 'FETCH_PRODUCT_DETAILS',
-        productID: 1
-      });
+        type: 'FETCH_FILTERS',
+        filtersMeta: [],
+        isFetchingFilters: true
+      })
   })
 
   it('should create addToCart action', () => {
@@ -34,32 +37,18 @@ describe('store actions', () => {
       })
   });
 
-  it('should create fetchCartItems action', () => {
-    expect(actions.fetchCartItems([1, 2, 3]))
-      .toEqual({
-        type: 'FETCH_CART_ITEMS',
-        cartItems: [1, 2, 3]
-      });
-  })
-
   it('should create filterProducts action', () => {
-    expect(actions.filterProducts())
+    expect(actions.setFilters({ brandFilter: 'ayataka' }))
       .toEqual({
-        type: 'FILTER_PRODUCTS',
-        brandFilter: [],
-        priceFilter: []
+        type: 'SET_FILTERS',
+        brandFilter: 'ayataka',
+        priceFilter: ''
       })
-    expect(actions.filterProducts(['ayataka']))
+    expect(actions.setFilters({ priceFilter: "[0, 5]" }))
       .toEqual({
-        type: 'FILTER_PRODUCTS',
-        brandFilter: ['ayataka'],
-        priceFilter: []
-      })
-    expect(actions.filterProducts([], [0, 5]))
-      .toEqual({
-        type: 'FILTER_PRODUCTS',
-        brandFilter: [],
-        priceFilter: [0, 5]
+        type: 'SET_FILTERS',
+        brandFilter: '',
+        priceFilter: "[0, 5]"
       })
   });
 });
