@@ -21,12 +21,16 @@ const mapStateToProps = state => {
   const {
     products,
     filters,
+    filtersMeta,
     cart,
     isFetchingProducts,
+    isFetchingFilters
   } = state;
   return {
     products,
     filters,
+    filtersMeta,
+    isFetchingFilters,
     isFetchingProducts,
     filteredProducts: getFilteredProducts(filters, products),
     cartProducts: getCartProducts(cart, products),

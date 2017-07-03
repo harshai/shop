@@ -11,8 +11,8 @@ export const fetchProducts = (products = [], isFetchingProducts = true) => ({
   isFetchingProducts
 });
 
-export const fetchFilters = (filtersMeta = [], isFetchingFilters = true) => ({
-  type: types.FETCH_FILTERS,
+export const fetchFiltersMeta = (filtersMeta = [], isFetchingFilters = true) => ({
+  type: types.FETCH_FILTERS_META,
   filtersMeta,
   isFetchingFilters
 });

@@ -8,6 +8,8 @@ describe('products', () => {
         brandFilter: [],
         priceFilter: []
       },
+      filtersMeta: [],
+      isFetchingFilters: true,
       products: [],
       cart: [],
       isFetchingProducts: true,
@@ -33,11 +35,14 @@ describe('products', () => {
         details: 'Some more details'
       }],
       isFetchingProducts: false,
+
     })).toEqual({
       filters: {
         brandFilter: [],
         priceFilter: [],
       },
+      filtersMeta: [],
+      isFetchingFilters: true,
       products: [{
         productID: 1,
         details: 'Some details'
@@ -59,9 +64,41 @@ describe('products', () => {
         brandFilter: [],
         priceFilter: []
       },
+      filtersMeta: [],
+      isFetchingFilters: true,
       products: [],
       cart: [2],
       isFetchingProducts: true,
    });
   });
+
+  it('should handle FETCH_FILTERS_META', () => {
+    expect(shop(initialState, {
+      type: 'FETCH_FILTERS_META',
+      filtersMeta: [{
+        name: "brand",
+        values: ["NutriWell", "MARIGOLD", "Marigold", "Meiji"]
+      }, {
+        name: "price",
+        values: ["0-0.99", "1-1.99", "2-2.99"]
+      }],
+      isFetchingFilters: false
+     })).toEqual({
+      filters: {
+        brandFilter: [],
+        priceFilter: []
+      },
+      filtersMeta: [{
+        name: "brand",
+        values: ["NutriWell", "MARIGOLD", "Marigold", "Meiji"]
+      }, {
+        name: "price",
+        values: ["0-0.99", "1-1.99", "2-2.99"]
+      }],
+      isFetchingFilters: false,
+      products: [],
+      cart: [],
+      isFetchingProducts: true,
+    })
+  })
 })

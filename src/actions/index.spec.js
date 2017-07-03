@@ -21,11 +21,25 @@ describe('actions', () => {
   });
 
   it('should create fetchFitlers action', () => {
-    expect(actions.fetchFilters())
+    expect(actions.fetchFiltersMeta())
       .toEqual({
-        type: 'FETCH_FILTERS',
+        type: 'FETCH_FILTERS_META',
         filtersMeta: [],
         isFetchingFilters: true
+      });
+    const filtersMeta = [{
+        name: "brand",
+        values: ["NutriWell", "MARIGOLD", "Marigold", "Meiji"]
+      }, {
+        name: "price",
+        values: ["0-0.99", "1-1.99", "2-2.99"]
+      }];
+
+    expect(actions.fetchFiltersMeta(filtersMeta, false))
+      .toEqual({
+        type: 'FETCH_FILTERS_META',
+        filtersMeta: filtersMeta,
+        isFetchingFilters: false
       })
   })
 

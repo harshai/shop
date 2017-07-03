@@ -8,8 +8,11 @@ class ProductListings extends Component {
   static propTypes = {
     filteredProducts: PropTypes.array.isRequired,
     filters: PropTypes.object.isRequired,
-    fetchProducts: PropTypes.func.isRequired,
+    filtersMeta: PropTypes.array.isRequired,
+    isFetchingFilters: PropTypes.bool.isRequired,
     setFilters: PropTypes.func.isRequired,
+    fetchProducts: PropTypes.func.isRequired,
+    fetchFiltersMeta: PropTypes.func.isRequired,
   }
 
   componentWillMount() {
@@ -18,18 +21,23 @@ class ProductListings extends Component {
 
   fetchData() {
     mockFetch().then(({products, filters}) => {
-      console.log(products, filters);
       this.props.fetchProducts(products, false);
+      this.props.fetchFiltersMeta(filters, false);
     })
   }
 
   render() {
     return (
       <section>
-        <Filters filters={this.props.filters} setFilters={this.props.setFilters}/>
-        {this.props.isFetchingProducts ?
+        {this.props.isFetchingProducts && this.props.isFetchingFilters ?
           <LoadingIndicator isLoading pastDelay/> :
-          `Products shown: ${this.props.filteredProducts.length}`
+            <div>
+              <Filters
+                filters={this.props.filters}
+                setFilters={this.props.setFilters}
+                filtersMeta={this.props.filtersMeta} />
+              <div>Products shown: {this.props.filteredProducts.length}</div>
+            </div>
         }
       </section>
     );

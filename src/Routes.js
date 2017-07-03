@@ -34,11 +34,14 @@ const AppliedRoute = ({ component: C, props: cProps, ...rest }) =>  (
 const Routes = ({ childProps, actions }) => {
   const productListingProps = {
     filters: childProps.filters,
+    filtersMeta: childProps.filtersMeta,
+    isFetchingFilters: childProps.isFetchingFilters,
     filteredProducts: childProps.filteredProducts,
     isFetchingProducts: childProps.isFetchingProducts,
     // Actions
     addToCart: actions.addToCart,
     fetchProducts: actions.fetchProducts,
+    fetchFiltersMeta: actions.fetchFiltersMeta,
     setFilters: actions.setFilters,
   }
   const cartProps = {
