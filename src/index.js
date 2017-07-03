@@ -13,7 +13,7 @@ const ProvidedApp = <Provider store={store}>
   <App />
 </Provider>
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/shop">
     {ProvidedApp}
   </BrowserRouter>, document.getElementById('root')
 );
