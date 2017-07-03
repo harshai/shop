@@ -25,22 +25,25 @@ class ProductDetails extends Component {
   }
 
   render() {
-    if (Object.keys(this.props.productDetails).length === 0 && !this.props.isFetchingProductDetails) {
+    if (this.props.isFetchingProductDetails) {
+      return <LoadingIndicator isLoading pastDelay/>
+    }
+
+    if (Object.keys(this.props.productDetails).length === 0) {
       return <Redirect to="/not-found" />
     }
+
     return (
       <section className="product-details">
-        {this.props.isFetchingProductDetails ?
-          <LoadingIndicator isLoading pastDelay/> :
-          <div>
-            <dl>
-            {Object.keys(this.props.productDetails).map(detail => ([
-              <dt>{detail}</dt>,
-              <dd>{this.props.productDetails[detail]}</dd>,
-            ]))}
-            </dl>
-            <button onClick={this.props.addToCart.bind(null, this.props.productDetails.id)}>Add to Cart</button>
-          </div>}
+        {<div>
+          <dl>
+          {Object.keys(this.props.productDetails).map(detail => ([
+            <dt>{detail}</dt>,
+            <dd>{this.props.productDetails[detail]}</dd>,
+          ]))}
+          </dl>
+          <button onClick={this.props.addToCart.bind(null, this.props.productDetails.id)}>Add to Cart</button>
+        </div>}
       </section>
     )
   }

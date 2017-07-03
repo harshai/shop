@@ -8,6 +8,7 @@ import {
 
 import { toggleArrElement } from '../utils/shopUtils';
 const initialState = {
+  // TODO: Remove flags from state
   filters: {
     brandFilter: [],
     priceFilter: []
