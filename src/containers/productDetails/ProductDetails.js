@@ -25,7 +25,7 @@ class ProductDetails extends Component {
   }
 
   render() {
-    if (!this.props.productDetails && !this.props.isFetchingProductDetails) {
+    if (Object.keys(this.props.productDetails).length === 0 && !this.props.isFetchingProductDetails) {
       return <Redirect to="/not-found" />
     }
     return (
