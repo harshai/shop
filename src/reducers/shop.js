@@ -23,6 +23,7 @@ const initialState = {
 }
 
 export default (state = initialState, actions) => {
+  // TODO: remove unncecessary items from state, abstract is<> flags to mockAjax
   const {
     filtersMeta,
     isFetchingFilters,

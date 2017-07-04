@@ -21,6 +21,11 @@ class ProductListings extends Component {
     this.fetchData();
   }
 
+  componentWillUnmount() {
+    this.props.fetchProducts();
+    this.props.fetchFiltersMeta();
+  }
+
   fetchData() {
     mockFetch().then(({products, filters}) => {
       this.props.fetchProducts(products, false);
