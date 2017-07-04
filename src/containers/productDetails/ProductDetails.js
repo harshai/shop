@@ -13,7 +13,7 @@ class ProductDetails extends Component {
     productDetails: PropTypes.object.isRequired
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchData();
   }
 
