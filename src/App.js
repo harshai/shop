@@ -30,10 +30,10 @@ const mapStateToProps = state => {
     products,
     filters,
     filtersMeta,
-    productDetails,
     isFetchingProductDetails,
     isFetchingFilters,
     isFetchingProducts,
+    productDetails, // Compute value
     filteredProducts: getFilteredProducts(filters, products),
     cartProducts: getCartProducts(cart, products),
     cartCount: cart.length,

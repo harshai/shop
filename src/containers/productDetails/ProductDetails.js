@@ -17,6 +17,11 @@ class ProductDetails extends Component {
     this.fetchData();
   }
 
+  componentWillUnmount() {
+    // Clear product details from state and fetch details anew
+    this.props.fetchProductDetails();
+  }
+
   fetchData() {
     mockFetch().then(({products, filters}) => {
       const product = getProductDetails(parseInt(this.props.match.params.id, 10), products)
