@@ -17,7 +17,7 @@ class ProductListings extends Component {
     addToCart: PropTypes.func.isRequired,
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchData();
   }
 
