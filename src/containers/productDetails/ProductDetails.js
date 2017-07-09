@@ -17,6 +17,7 @@ class ProductDetails extends Component {
 
   componentDidMount() {
     this.fetchData();
+    document.title = 'Shop';
   }
 
   componentWillUnmount() {
@@ -46,6 +47,8 @@ class ProductDetails extends Component {
       measurement,
       desc
     } = this.props.productDetails;
+
+    document.title = `Shop | ${name}`;
     return (
       <section className="section product-details">
         <h1 className="product-details__title">{name}</h1>

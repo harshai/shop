@@ -15,6 +15,7 @@ class Cart extends Component {
 
   componentWillMount() {
     this.fetchData();
+    document.title = 'Shop | Cart';
   }
 
   componentWillUnmount() {

@@ -20,6 +20,7 @@ class ProductListings extends Component {
 
   componentDidMount() {
     this.fetchData();
+    document.title = 'Shop | Home';
   }
 
   componentWillUnmount() {
