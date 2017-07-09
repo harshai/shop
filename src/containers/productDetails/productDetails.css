@@ -1,0 +1,9 @@
+.product-details {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+.product-details__image {
+  float: left;
+  width: 16rem;
+  margin-right: 1rem;
+}

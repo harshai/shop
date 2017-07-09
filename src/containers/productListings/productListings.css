@@ -1,0 +1,5 @@
+.listings {
+  display: flex;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}

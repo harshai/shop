@@ -45,7 +45,7 @@ const mapStateToProps = state => {
 
 const App = ({ cartCount, actions, ...rest }) => {
   const childProps = { ...rest };
-  return <main>
+  return <main className="main">
     <Header cartCount={cartCount}/>
     <Routes actions={actions} childProps={childProps} />
   </main>;

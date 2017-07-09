@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from '../checkbox/Checkbox';
+import "./filters.css";
 
 const Filters = (props) => {
   const handleChange = (ev) => {
@@ -12,10 +13,10 @@ const Filters = (props) => {
   const isChecked = (kind, value) => props.filters[kind].includes(value)
 
   return (
-    <form>
+    <form className="filter">
         {props.filtersMeta.map(({name, values}) => (
-          <fieldset key={name}>
-            <legend>{name}</legend>
+          <fieldset className="filter__kind" key={name}>
+            <legend className="filter__kind__title">{name}</legend>
             {values.map(value =>
               <Checkbox
                 key={value}

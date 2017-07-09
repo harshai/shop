@@ -34,7 +34,7 @@ class Cart extends Component {
       return <LoadingIndicator isLoading pastDelay/>
     }
     return (
-      <section className="cart">
+      <section className="section cart">
         <Products products={this.props.cartProducts} />
       </section>
     )

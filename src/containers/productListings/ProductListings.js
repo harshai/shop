@@ -4,6 +4,7 @@ import mockFetch from '../../utils/mockFetch';
 import LoadingIndicator from '../../components/loadingIndicator/LoadingIndicator';
 import Filters from '../../components/filters/Filters';
 import Products from '../../components/products/Products';
+import './productListings.css';
 
 class ProductListings extends Component {
   static propTypes = {
@@ -34,20 +35,18 @@ class ProductListings extends Component {
   }
 
   render() {
+    if (this.props.isFetchingProducts && this.props.isFetchingFilters) {
+      return <LoadingIndicator isLoading pastDelay/>
+    }
     return (
-      <section>
-        {this.props.isFetchingProducts && this.props.isFetchingFilters ?
-          <LoadingIndicator isLoading pastDelay/> :
-            <div>
-              <Filters
-                filters={this.props.filters}
-                setFilters={this.props.setFilters}
-                filtersMeta={this.props.filtersMeta} />
-              <Products
-                products={this.props.filteredProducts}
-                addToCart={this.props.addToCart} />
-            </div>
-        }
+      <section className="section listings">
+        <Filters
+          filters={this.props.filters}
+          setFilters={this.props.setFilters}
+          filtersMeta={this.props.filtersMeta} />
+      <Products
+        products={this.props.filteredProducts}
+        addToCart={this.props.addToCart} />
       </section>
     );
   }

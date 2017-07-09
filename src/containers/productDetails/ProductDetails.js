@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import mockFetch from '../../utils/mockFetch';
 import { getProductDetails } from '../../utils/shopUtils';
 import { Redirect } from 'react-router';
+import Button from '../../components/button/Button';
 import LoadingIndicator from '../../components/loadingIndicator/LoadingIndicator';
+import './productDetails.css';
 
 class ProductDetails extends Component {
   static propTypes = {
@@ -37,18 +39,23 @@ class ProductDetails extends Component {
     if (Object.keys(this.props.productDetails).length === 0) {
       return <Redirect to="/not-found" />
     }
-
+    const {
+      name,
+      image,
+      price,
+      measurement,
+      desc
+    } = this.props.productDetails;
     return (
-      <section className="product-details">
-        {<div>
-          <dl>
-          {Object.keys(this.props.productDetails).map(detail => ([
-            <dt>{detail}</dt>,
-            <dd>{this.props.productDetails[detail]}</dd>,
-          ]))}
-          </dl>
-          <button onClick={this.props.addToCart.bind(null, this.props.productDetails.id)}>Add to Cart</button>
-        </div>}
+      <section className="section product-details">
+        <h1 className="product-details__title">{name}</h1>
+        <img className="product-details__image" src={require(`../../assets/${image}`)} alt={name} />
+        <div className="product-details__specs">
+          <h3>{measurement}</h3>
+          <h2>${price}</h2>
+          <p>{desc}</p>
+          <Button onClick={this.props.addToCart.bind(null, this.props.productDetails.id)}>Add to Cart</Button>
+        </div>
       </section>
     )
   }
