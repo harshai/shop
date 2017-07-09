@@ -14,7 +14,9 @@ describe('products', () => {
       cart: [],
       isFetchingProducts: true,
       productDetails: {},
-      isFetchingProductDetails: true
+      isFetchingProductDetails: true,
+      cartProducts: [],
+      isFetchingCartProducts: true
     }
   });
 
@@ -55,7 +57,9 @@ describe('products', () => {
       cart: [],
       isFetchingProducts: false,
       productDetails: {},
-      isFetchingProductDetails: true
+      isFetchingProductDetails: true,
+      cartProducts: [],
+      isFetchingCartProducts: true,
     })
   });
 
@@ -74,7 +78,9 @@ describe('products', () => {
       cart: [2],
       isFetchingProducts: true,
       productDetails: {},
-      isFetchingProductDetails: true
+      isFetchingProductDetails: true,
+      cartProducts: [],
+      isFetchingCartProducts: true,
    });
   });
 
@@ -106,7 +112,9 @@ describe('products', () => {
       cart: [],
       isFetchingProducts: true,
       productDetails: {},
-      isFetchingProductDetails: true
+      isFetchingProductDetails: true,
+      cartProducts: [],
+      isFetchingCartProducts: true,
     })
   })
 
@@ -132,7 +140,37 @@ describe('products', () => {
         brand: 'Ayataka',
         type: 'Beverage'
       },
-      isFetchingProductDetails: false
+      isFetchingProductDetails: false,
+      cartProducts: [],
+      isFetchingCartProducts: true,
+    })
+  })
+
+  it('should handle FETCH_CART_PRODUCTS', () => {
+    expect(shop(initialState, {
+      type: 'FETCH_CART_PRODUCTS',
+      cartProducts: [{
+        brand: 'Ayataka',
+        type: 'Beverage'
+      }],
+      isFetchingCartProducts: false
+    })).toEqual({
+      filters: {
+        brandFilter: [],
+        priceFilter: []
+      },
+      filtersMeta: [],
+      isFetchingFilters: true,
+      products: [],
+      cart: [],
+      isFetchingProducts: true,
+      productDetails: {},
+      isFetchingProductDetails: true,
+      cartProducts: [{
+        brand: 'Ayataka',
+        type: 'Beverage'
+      }],
+      isFetchingCartProducts: false,
     })
   })
 })

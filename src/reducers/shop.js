@@ -4,6 +4,7 @@ import {
   ADD_TO_CART,
   FETCH_FILTERS_META,
   FETCH_PRODUCT_DETAILS,
+  FETCH_CART_PRODUCTS,
 } from '../constants/actionTypes';
 
 import { toggleArrElement } from '../utils/shopUtils';
@@ -20,6 +21,8 @@ const initialState = {
   productDetails: {},
   isFetchingProductDetails: true,
   cart: [],
+  cartProducts: [],
+  isFetchingCartProducts: true
 }
 
 export default (state = initialState, actions) => {
@@ -34,6 +37,8 @@ export default (state = initialState, actions) => {
     isFetchingProducts,
     productDetails,
     isFetchingProductDetails,
+    cartProducts,
+    isFetchingCartProducts,
     type,
   } = actions;
 
@@ -66,6 +71,12 @@ export default (state = initialState, actions) => {
             priceFilter: toggleArrElement(priceFilter, state.filters.priceFilter)
           }
         }
+      )
+    case FETCH_CART_PRODUCTS:
+      return Object.assign(
+        {},
+        state,
+        { cartProducts, isFetchingCartProducts }
       )
     case ADD_TO_CART:
       return Object.assign(

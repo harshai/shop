@@ -17,6 +17,13 @@ export const fetchProducts = (products = [], isFetchingProducts = true) => ({
   isFetchingProducts
 });
 
+
+export const fetchCartProducts = (cartProducts = [], isFetchingCartProducts = true) => ({
+  type: types.FETCH_CART_PRODUCTS,
+  cartProducts,
+  isFetchingCartProducts
+});
+
 export const fetchFiltersMeta = (filtersMeta = [], isFetchingFilters = true) => ({
   type: types.FETCH_FILTERS_META,
   filtersMeta,

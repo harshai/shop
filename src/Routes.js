@@ -46,7 +46,10 @@ const Routes = ({ childProps, actions }) => {
     setFilters: actions.setFilters,
   }
   const cartProps = {
+    cart: childProps.cart,
     cartProducts: childProps.cartProducts,
+    fetchCartProducts: actions.fetchCartProducts,
+    isFetchingCartProducts: childProps.isFetchingCartProducts
   }
   const productDetailsProps = {
     fetchProductDetails: actions.fetchProductDetails,

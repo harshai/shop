@@ -7,7 +7,6 @@ import Routes from './Routes';
 import Header from './components/header/Header';
 import {
   getFilteredProducts,
-  getCartProducts,
 } from './utils/shopUtils';
 import './App.css';
 
@@ -22,6 +21,8 @@ const mapStateToProps = state => {
     filters,
     filtersMeta,
     cart,
+    cartProducts,
+    isFetchingCartProducts,
     isFetchingProducts,
     isFetchingProductDetails,
     isFetchingFilters
@@ -35,7 +36,9 @@ const mapStateToProps = state => {
     isFetchingProducts,
     productDetails, // Compute value
     filteredProducts: getFilteredProducts(filters, products),
-    cartProducts: getCartProducts(cart, products),
+    cart,
+    isFetchingCartProducts,
+    cartProducts,
     cartCount: cart.length,
   }
  }

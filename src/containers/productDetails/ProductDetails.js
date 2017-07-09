@@ -23,7 +23,7 @@ class ProductDetails extends Component {
   }
 
   fetchData() {
-    mockFetch().then(({products, filters}) => {
+    mockFetch().then(({ products }) => {
       const product = getProductDetails(parseInt(this.props.match.params.id, 10), products)
       this.props.fetchProductDetails(product, false);
     })
