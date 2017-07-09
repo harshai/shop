@@ -1,7 +1,8 @@
 .filter {
-  width: 10rem;
   margin-bottom: 2rem;
   padding-right: 1rem;
+  display: flex;
+  justify-content: space-around;
 }
 
 .filter__kind {
@@ -18,4 +19,12 @@
 
 .filter__kind__item {
   clear: left;
+}
+
+@media (min-width: 60rem) {
+  .filter {
+    width: 10rem;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }

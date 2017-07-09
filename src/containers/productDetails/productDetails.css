@@ -7,3 +7,16 @@
   width: 16rem;
   margin-right: 1rem;
 }
+
+.product-details__specs {
+  clear: left;
+}
+
+@media (min-width: 60rem) {
+  .product-details__image {
+    float: left;
+  }
+  .product-details__specs {
+    clear: none;
+  }
+}
