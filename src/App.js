@@ -48,6 +48,7 @@ const App = ({ cartCount, actions, ...rest }) => {
   return <main className="main">
     <Header cartCount={cartCount}/>
     <Routes actions={actions} childProps={childProps} />
+    <footer className="main__footer"><a href="https://github.com/harshai/shop">Source</a></footer>
   </main>;
 }
 const connectedApp = connect(

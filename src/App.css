@@ -9,4 +9,9 @@ body {
 
 .main {
   min-height: 50vh;
+  padding: 1rem;
+}
+
+.main__footer {
+  text-align: right;
 }

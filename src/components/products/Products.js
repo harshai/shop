@@ -7,6 +7,7 @@ import './products.css';
 const Product = ({ products, addToCart }) => {
   return (
     <section className="products">
+      <header className="products__header">Showing <em>{products.length}</em> {`product${products.length === 1 ? '' : 's'}`}</header>
       <ul className="products__list">
         {products.map(product =>
           <li className="products__list__item" key={product.id}>
@@ -20,7 +21,6 @@ const Product = ({ products, addToCart }) => {
         </li>
         )}
       </ul>
-    <footer className="products__footer">Showing <em>{products.length}</em> {`product${products.length === 1 ? '' : 's'}`}</footer>
     </section>
   )
 }
